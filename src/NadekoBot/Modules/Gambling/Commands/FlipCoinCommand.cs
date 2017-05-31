@@ -75,7 +75,10 @@ namespace NadekoBot.Modules.Gambling
             {
                 var guessStr = guess.Trim().ToUpperInvariant();
                 if (guessStr != "H" && guessStr != "T" && guessStr != "HEADS" && guessStr != "TAILS")
+                {
+                    await ReplyErrorLocalized("syntax_error", NadekoBot.BotConfig.HelpString).ConfigureAwait(false);
                     return;
+                }
 
                 if (amount < NadekoBot.BotConfig.MinimumBetAmount)
                 {
